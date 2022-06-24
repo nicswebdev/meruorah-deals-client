@@ -1,0 +1,158 @@
+.header {
+  width: 100%;
+  height: 110px;
+  line-height: 115px;
+  box-shadow: 5px 5px 10px -5px #cecece;
+}
+
+.top__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 35px;
+  background-color: #a26b46;
+  padding: 0 20px 0 20px;
+}
+
+.top__menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-family: 'Proxima';
+}
+
+.top__menu a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.header__container, .nav__wrapper {
+  height: 75px;
+}
+
+.logo {
+  text-align: center;
+}
+
+.menu a {
+  font-weight: 500;
+  font-size: .9rem;
+  transition: 0.3s;
+  text-decoration: none;
+  color: #19191a;
+  font-family: 'Proxima';
+  text-transform: uppercase;
+}
+
+.menu a:hover {
+  color: #a26b46;
+}
+
+.active__menu {
+  color: #a26b46 !important;
+}
+
+.cart__icon i,
+.mobile__menu i {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.cart__icon {
+  position: relative;
+}
+
+.cart__badge {
+  position: absolute;
+  top: 35px;
+  right: -10px;
+  background-color: #a26b46;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile__menu {
+  font-weight: 600;
+  display: none;
+}
+
+.header__shrink {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #FFF;
+  z-index: 99999;
+  box-shadow: 5px 5px 10px -5px #cecece;
+}
+
+@media only screen and (max-width: 992px) {
+  .top__menu {
+    display: none !important;
+  }
+
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.425);
+    z-index: 99;
+    display: none;
+  }
+
+  .logo img {
+    width: calc(100% - 20%);
+  }
+
+  .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    line-height: 20px;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  .mobile__menu {
+    display: block;
+  }
+
+  .show__menu {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .top__menu {
+    display: none !important;
+  }
+
+  .header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .logo img {
+    width: calc(100% - 30%);
+  }
+}

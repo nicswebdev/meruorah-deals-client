@@ -1,0 +1,48 @@
+
+.section__highlight {
+    background-color: #dedede;
+}
+
+.row__highlight {
+    background: #FFF;
+}
+
+.highlight__container {
+    padding: 50px 150px 50px 150px !important;
+}
+
+.hightlight__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.highlight__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 15px;
+}
+
+.highlight__content h5 {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    font-family: 'Proxima';
+    font-weight: 600;
+}
+
+.highlight__content .price .deals__price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Proxima';
+}
+
+.highlight__content .price .fixed__price {
+    font-size: .8rem;
+    color: #cecece;
+    font-family: 'Proxima';
+}

@@ -1,0 +1,67 @@
+
+.login__section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.login__content {
+    background: #a26b4673;
+    padding: 30px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.login__content h5 {
+    font-size: 1.9rem;
+    color: #19191a;
+    margin-bottom: 30px;
+}
+
+.form__group {
+    display: flex;
+    align-items: center;
+    background: #FFF;
+    width: 100%;
+    border:1px solid #e8e8e8;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form input {
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.form textarea {
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.form input:focus, .form textarea:focus {
+    outline: none;
+}
+
+.login__btn {
+    background: #A26B46;
+    color: #FFF;
+    padding: 7px 25px;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.link__register {
+    font-size: .9rem;
+    color: #19191a;
+    text-decoration: none;
+}
+
+.link__register:hover {
+    color: #19191a;
+}

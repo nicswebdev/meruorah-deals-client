@@ -1,0 +1,66 @@
+
+.breadcrumb__deals {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.breadcrumb__deals h5 {
+    font-family: 'Proxima';
+    font-size: 1rem;
+}
+
+.section__deals {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.left__deals__col {
+    padding-top: 20px;
+}
+
+.deals__title h5 {
+    font-family: 'Proxima';
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.deals__title .deals__subtitle, .deals__title .deals__descriptions {
+    font-size: .9rem;
+}
+
+.right__deals__col {
+    border: 1px solid #dedede;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.details__price {
+    margin-top: 40px;
+    padding: 30px 80px;
+}
+
+.details__price .price__text {
+    font-size: 1.4rem;
+    margin-left: 10px;
+}
+
+.details__price .price__from {
+    font-size: .9rem;
+}
+
+.button__package_options {
+    padding: 7px 25px;
+    background: #A26B46;
+    border: 1px solid #A26B46;
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+.section__package {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    background: #cecece;
+}

@@ -1,0 +1,11 @@
+
+.section__about {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.section__about h5 {
+    font-size: 1.9rem;
+    color: #A26B46;
+    margin-bottom: 20px;
+}

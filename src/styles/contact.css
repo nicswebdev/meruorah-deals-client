@@ -1,0 +1,28 @@
+
+.section__contact {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.contact__title {
+    font-size: 1.9rem;
+    color: #A26B46;
+}
+
+.contact__desc {
+    font-size: .9rem;
+}
+
+.contact__info h5 {
+    font-size: 1rem;
+    font-family: 'Proxima';
+    font-weight: 600;
+}
+
+.contact__info li {
+    border: 0px;
+}
+
+.contact__info p {
+    font-size: .9rem;
+}

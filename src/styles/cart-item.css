@@ -1,0 +1,42 @@
+.cart__item-info img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
+.cart__packages-title {
+    font-family: 'Proxima';
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.cart__packages-price {
+    font-size: 1rem;
+}
+
+.cart__packages-price span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #A26B46;
+}
+
+.increase__decrease-btn {
+    background: #A26B46;
+    color: #FFF;
+    padding: 2px 5px;
+}
+
+.increase__btn, .decrease__btn {
+    cursor: pointer;
+}
+
+.delete__btn {
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart__item {
+    padding: 20px 0px;
+    border-bottom: 1px solid #cecece;
+}

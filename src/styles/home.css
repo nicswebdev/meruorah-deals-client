@@ -1,0 +1,32 @@
+
+.deals__section {
+    padding-top: 60px;
+}
+
+.best__deals {
+    justify-content: space-between;
+}
+
+.heading__title {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #A26B46;
+}
+
+.heading__paragraph {
+    font-size: .9rem;
+    font-family: 'Proxima';
+}
+
+.button__part {
+    border: 1px solid #000000;
+    background: transparent;
+    padding: 7px 25px;
+    font-weight: 500;
+    font-family: 'Proxima';
+}
+
+.brand__section {
+    padding-top: 60px;
+    padding-bottom: 100px;
+}

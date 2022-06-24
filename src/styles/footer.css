@@ -1,0 +1,48 @@
+.footer {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    background: #A26B46;
+    color: #FFF;
+    font-family: 'Proxima';
+}
+
+.footer p, .footer ul li {
+    font-size: .9rem;
+    line-height: 28px;
+}
+
+.footer__title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Proxima';
+}
+
+.newsletter {
+    padding: 7px 25px;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.newsletter input {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.newsletter input:focus {
+    outline: none;
+}
+
+.newsletter input::placeholder {
+    color: #FFF;
+}
+
+.copyright__text {
+    font-size: .8rem;
+    text-align: center;
+}

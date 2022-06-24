@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+font-family: "Plantin";
+src: local("Plantin"),
+ url("./assets/fonts/Plantin.woff") format("woff");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+font-family: "Proxima";
+src: local("ProximaNova-Regular"),
+ url("./assets/fonts/ProximaNova-Regular.woff") format("woff");
+}
+
+* {
+  font-family: 'Proxima';
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plantin';
 }

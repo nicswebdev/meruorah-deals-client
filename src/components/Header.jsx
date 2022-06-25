@@ -7,12 +7,19 @@ import logo from "../assets/image/logo3.png";
 import { Container } from "reactstrap";
 
 import {Link} from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../redux/userRedux";
 
 const Header = () => {
 
   const menuRef = useRef(null);
   const headerRef = useRef(null);
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
+
+  const totalQuantity = useSelector((state)=>state.cart.totalQuantity);
+  const userData = useSelector((state) => state.user.currentUser);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -28,6 +35,10 @@ const Header = () => {
 
     return () => window.removeEventListener("scroll", null);
   }, []);
+
+  const handleSignOut = () => {
+    dispatch(userActions.logout());
+  }
 
   return (
     <header className="header" ref={headerRef}>
@@ -45,16 +56,26 @@ const Header = () => {
           </div>
         </div>
         <div className="top__menu__right d-flex align-items-center gap-3">
-          <div className="d-flex align-items-center gap-1">
-            <Link to={`/login`}>
-              <i class="ri-login-box-line"></i> Sign In
-            </Link>
-          </div>
-          <div className="d-flex align-items-center gap-1">
-            <Link to={`/register`}>
-              <i class="ri-login-box-line"></i> Register
-            </Link>
-          </div>
+          {!!userData && userData?.accessToken ? (
+            <div className="logout__btn d-flex align-items-center gap-1">
+              <div style={{ cursor: "pointer" }} onClick={handleSignOut}>
+                <i class="ri-login-box-line"></i> Sign Out
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="d-flex align-items-center gap-1">
+                <Link to={`/login`}>
+                  <i class="ri-login-box-line"></i> Sign In
+                </Link>
+              </div>
+              <div className="d-flex align-items-center gap-1">
+                <Link to={`/register`}>
+                  <i class="ri-login-box-line"></i> Register
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <Container className="header__container">
@@ -69,8 +90,10 @@ const Header = () => {
           </div>
           <div className="nav__right d-flex align-items-center gap-3">
             <span className="cart__icon">
-              <i class="ri-shopping-basket-line"></i>
-              <span className="cart__badge">2</span>
+              <Link to="/cart">
+                <i class="ri-shopping-basket-line"></i>
+                <span className="cart__badge">{totalQuantity}</span>
+              </Link>
             </span>
             <span className="mobile__menu">
               <i class="ri-menu-line"></i>

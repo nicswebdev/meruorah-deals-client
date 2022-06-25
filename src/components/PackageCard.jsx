@@ -1,9 +1,18 @@
 import React from "react";
+import { cartActions } from "../redux/cartRedux";
 
 import "../styles/package-card.css";
 
+import {useDispatch} from 'react-redux';
+
 function PackageCard(props) {
-  const { title, desc, price } = props.item;
+  const { _id, title, desc, price } = props.item;
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(cartActions.addItem({ _id, title, desc, price }));
+  }
 
   return (
     <div className="package__card">
@@ -13,7 +22,7 @@ function PackageCard(props) {
       </div>
       <div className="right__side">
         <h5>IDR {price}</h5>
-        <button className="button__package_options">
+        <button className="button__package_options" onClick={handleClick}>
           Add To Cart
         </button>
       </div>

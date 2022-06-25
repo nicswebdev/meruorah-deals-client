@@ -7,6 +7,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ScrollToTop from "./components/ScrollToTop";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { useSelector } from "react-redux";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,11 +21,14 @@ import {
 import Cart from "./pages/Cart";
 
 function App() {
-  const user = true;
+  const userData = useSelector((state) => state.user.currentUser);
+
+  console.log(userData);
 
   return (
     <Router>
       <ScrollToTop>
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/category/:categoryId" element={<CategoryListing />} />
@@ -30,11 +38,19 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route
             path="/login"
-            element={user ? <Navigate to="/" /> : <Login />}
+            element={
+              !!userData && userData?.accessToken ? (
+                <Navigate to="/" />
+              ) : (
+                <Login />
+              )
+            }
           />
           <Route
             path="/register"
-            element={user ? <Navigate to="/" /> : <Register />}
+            element={
+              !!userData && userData?.accessToken ? <Navigate to="/" /> : <Register />
+            }
           />
         </Routes>
       </ScrollToTop>

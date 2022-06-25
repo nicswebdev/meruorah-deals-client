@@ -4,31 +4,16 @@ import Header from "../components/Header";
 
 import { Container, Row, Col } from "reactstrap";
 
+import { useSelector } from "react-redux";
+
 import CartItem from "../components/CartItem";
 
 import "../styles/shopping-cart.css";
 
 const Cart = () => {
-  const cartPackages = [
-    {
-      id: "fwefewf",
-      title: "Staycation",
-      totalPrice: 10000000,
-      quantity: 2,
-    },
-    {
-      id: "efwefwef",
-      title: "Staycation2",
-      totalPrice: 10000000,
-      quantity: 2,
-    },
-    {
-      id: "gregergr",
-      title: "Staycation3",
-      totalPrice: 10000000,
-      quantity: 2,
-    },
-  ];
+  const cartPackages = useSelector((state) => state.cart.cartItems);
+
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
 
   return (
     <div>
@@ -66,7 +51,7 @@ const Cart = () => {
                 <h5>Order Summary</h5>
                 <div className="subtotal__cart d-flex align-items-center justify-content-between">
                   <h5>Subtotal</h5>
-                  <h6>IDR 1000000</h6>
+                  <h6>IDR {totalAmount}</h6>
                 </div>
                 <button>
                   <div>Checkout</div>

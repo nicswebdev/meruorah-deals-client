@@ -1,4 +1,4 @@
-import React from "react";
+import {useState, useEffect} from "react";
 
 import { Container, Row, Col } from "reactstrap";
 
@@ -20,58 +20,71 @@ import logo from "../assets/image/logo3.png";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const deals = [
-  {
-    id: 1,
-    img: dealsImg,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-  {
-    id: 2,
-    img: dealsImg2,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-  {
-    id: 3,
-    img: dealsImg3,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-  {
-    id: 4,
-    img: dealsImg4,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-  {
-    id: 5,
-    img: dealsImg5,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-  {
-    id: 6,
-    img: dealsImg4,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-  {
-    id: 7,
-    img: dealsImg3,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-  {
-    id: 8,
-    img: dealsImg2,
-    title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
-    price: "1,000,000",
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+
+import { getDeals } from "../redux/apiCalls";
+
+// const deals = [
+//   {
+//     id: 1,
+//     img: dealsImg,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+//   {
+//     id: 2,
+//     img: dealsImg2,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+//   {
+//     id: 3,
+//     img: dealsImg3,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+//   {
+//     id: 4,
+//     img: dealsImg4,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+//   {
+//     id: 5,
+//     img: dealsImg5,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+//   {
+//     id: 6,
+//     img: dealsImg4,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+//   {
+//     id: 7,
+//     img: dealsImg3,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+//   {
+//     id: 8,
+//     img: dealsImg2,
+//     title: "2 or 3 Night Staycation @ Meruorah Komodo Labuan Bajo",
+//     price: "1,000,000",
+//   },
+// ];
 
 const Home = () => {
+
+  const deals = useSelector((state) => state.deals.currentDeals);
+  const dispatch = useDispatch();
+  const { isFetching } = useSelector((state) => state.deals);
+
+  useEffect(() => {
+    getDeals(dispatch);
+  },[]);
+
   return (
     <div>
       <Header />
@@ -118,7 +131,7 @@ const Home = () => {
           </Row>
           <Row>
             {deals.map((item) => (
-              <Col lg="3" md="4" key={item.id} className="mt-2">
+              <Col lg="3" md="4" key={item._id} className="mt-2">
                 <DealsCard item={item} />
               </Col>
             ))}

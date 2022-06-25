@@ -10,6 +10,8 @@ import CartItem from "../components/CartItem";
 
 import "../styles/shopping-cart.css";
 
+import {Link} from 'react-router-dom';
+
 const Cart = () => {
   const cartPackages = useSelector((state) => state.cart.cartItems);
 
@@ -53,9 +55,11 @@ const Cart = () => {
                   <h5>Subtotal</h5>
                   <h6>IDR {totalAmount}</h6>
                 </div>
-                <button>
-                  <div>Checkout</div>
-                </button>
+                <Link to="/checkout">
+                  <button>
+                    <div>Checkout</div>
+                  </button>
+                </Link>
               </div>
             </Col>
           </Row>

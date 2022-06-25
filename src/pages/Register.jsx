@@ -1,12 +1,36 @@
-import React from "react";
+import { useState } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
+import { register } from "../redux/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
+
 import "../styles/login.css";
 
+import { useNavigate } from "react-router-dom";
+
 const Register = () => {
+
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.register);
+
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    register(dispatch, { fname, lname, email, password });
+
+    if(error === false){
+      navigate("/login");
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -25,13 +49,23 @@ const Register = () => {
                   <Col lg="6">
                     <div className="form__group gap-2">
                       <i class="ri-user-line"></i>
-                      <input type="text" placeholder="First Name" required />
+                      <input
+                        type="text"
+                        placeholder="First Name"
+                        onChange={(e) => setFname(e.target.value)}
+                        required
+                      />
                     </div>
                   </Col>
                   <Col lg="6">
                     <div className="form__group gap-2">
                       <i class="ri-user-line"></i>
-                      <input type="text" placeholder="Last Name" required />
+                      <input
+                        type="text"
+                        placeholder="Last Name"
+                        onChange={(e) => setLname(e.target.value)}
+                        required
+                      />
                     </div>
                   </Col>
                 </Row>
@@ -39,7 +73,12 @@ const Register = () => {
                   <Col lg="12">
                     <div className="form__group gap-2">
                       <i class="ri-mail-line"></i>
-                      <input type="email" placeholder="Email" required />
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                      />
                     </div>
                   </Col>
                 </Row>
@@ -47,13 +86,23 @@ const Register = () => {
                   <Col lg="12">
                     <div className="form__group gap-2">
                       <i class="ri-lock-line"></i>
-                      <input type="password" placeholder="Password" required />
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
                     </div>
                   </Col>
                 </Row>
 
-                <button type="submit" className="login__btn">
-                  Register
+                <button
+                  type="submit"
+                  className="login__btn"
+                  disabled={isFetching}
+                  onClick={handleClick}
+                >
+                  {isFetching ? "Loading..." : "Register"}
                 </button>
               </form>
               <div className="link__register">

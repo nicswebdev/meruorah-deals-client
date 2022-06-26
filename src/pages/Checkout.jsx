@@ -1,23 +1,62 @@
-import React from "react";
+import {useState} from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 import { Container, Row, Col } from "reactstrap";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { order } from "../redux/apiCalls";
 
 import CheckoutSummary from "../components/CheckoutSummary";
+
+import { cartActions } from "../redux/cartRedux";
 
 import "../styles/shopping-cart.css";
 import "../styles/login.css";
 import "../styles/checkout.css";
 
 import { Link } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 const Checkout = () => {
+
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [zipcode, setZipcode] = useState("");
+
   const cartPackages = useSelector((state) => state.cart.cartItems);
 
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+
+  const userData = useSelector((state) => state.user.currentUser);
+
+  const dispatch = useDispatch();
+  const { isFetching } = useSelector((state) => state.order);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    order(dispatch, {
+      userId: userData._id,
+      packages: cartPackages,
+      amount: totalAmount,
+      address: {
+        phone: phone,
+        address: address,
+        city: city,
+        country: country,
+        zipcode: zipcode
+      },
+      status: "Success"
+    });
+
+    // setTimeout(() => {
+    //   dispatch(cartActions.clearItems());
+    // }, 2000);
+    dispatch(cartActions.clearItems());
+    
+  };
 
   return (
     <div>
@@ -41,6 +80,7 @@ const Checkout = () => {
                           <input
                             type="text"
                             placeholder="First Name"
+                            value={userData.fname}
                             required
                             readOnly
                           />
@@ -49,7 +89,13 @@ const Checkout = () => {
                       <Col lg="6">
                         <div className="form__group gap-2">
                           <i class="ri-user-line"></i>
-                          <input type="text" placeholder="Last Name" required />
+                          <input
+                            type="text"
+                            placeholder="Last Name"
+                            value={userData.lname}
+                            required
+                            readOnly
+                          />
                         </div>
                       </Col>
                     </Row>
@@ -57,7 +103,13 @@ const Checkout = () => {
                       <Col lg="6">
                         <div className="form__group gap-2">
                           <i class="ri-mail-line"></i>
-                          <input type="email" placeholder="Email" required />
+                          <input
+                            type="email"
+                            placeholder="Email"
+                            value={userData.email}
+                            required
+                            readOnly
+                          />
                         </div>
                       </Col>
                       <Col lg="6">
@@ -66,6 +118,7 @@ const Checkout = () => {
                           <input
                             type="text"
                             placeholder="Phone Number"
+                            onChange={(e) => setPhone(e.target.value)}
                             required
                           />
                         </div>
@@ -75,13 +128,23 @@ const Checkout = () => {
                       <Col lg="6">
                         <div className="form__group gap-2">
                           <i class="ri-map-pin-line"></i>
-                          <input type="text" placeholder="Address" required />
+                          <input
+                            type="text"
+                            placeholder="Address"
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                          />
                         </div>
                       </Col>
                       <Col lg="6">
                         <div className="form__group gap-2">
                           <i class="ri-building-line"></i>
-                          <input type="text" placeholder="City" required />
+                          <input
+                            type="text"
+                            placeholder="City"
+                            onChange={(e) => setCity(e.target.value)}
+                            required
+                          />
                         </div>
                       </Col>
                     </Row>
@@ -89,13 +152,23 @@ const Checkout = () => {
                       <Col lg="6">
                         <div className="form__group gap-2">
                           <i class="ri-flag-line"></i>
-                          <input type="text" placeholder="Country" required />
+                          <input
+                            type="text"
+                            placeholder="Country"
+                            onChange={(e) => setCountry(e.target.value)}
+                            required
+                          />
                         </div>
                       </Col>
                       <Col lg="6">
                         <div className="form__group gap-2">
                           <i class="ri-home-8-line"></i>
-                          <input type="text" placeholder="Zip Code" required />
+                          <input
+                            type="text"
+                            placeholder="Zip Code"
+                            onChange={(e) => setZipcode(e.target.value)}
+                            required
+                          />
                         </div>
                       </Col>
                     </Row>
@@ -105,7 +178,7 @@ const Checkout = () => {
             </Col>
             <Col lg="4">
               <div className="cart__bottom">
-                <h5 style={{marginBottom: "15px"}}>Order Summary</h5>
+                <h5 style={{ marginBottom: "15px" }}>Order Summary</h5>
                 {cartPackages.length === 0 ? (
                   <h5 className="text-center mt-5">
                     No package added to the cart.
@@ -117,13 +190,19 @@ const Checkout = () => {
                 )}
                 <div className="subtotal__cart d-flex align-items-center justify-content-between">
                   <h5>Subtotal</h5>
-                  <h6>IDR {totalAmount}</h6>
+                  <h6>
+                    <NumberFormat
+                      value={totalAmount}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"IDR "}
+                      renderText={(value) => value}
+                    />
+                  </h6>
                 </div>
-                <Link to="/checkout">
-                  <button>
-                    <div>Submit</div>
-                  </button>
-                </Link>
+                <button disabled={isFetching} onClick={handleClick}>
+                  <div>{isFetching ? "Loading..." : "Submit"}</div>
+                </button>
               </div>
             </Col>
           </Row>

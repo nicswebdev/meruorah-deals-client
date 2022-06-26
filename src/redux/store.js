@@ -4,6 +4,7 @@ import cartReducer from "./cartRedux";
 import userReducer from "./userRedux";
 import registerRedux from "./registerRedux";
 import dealsRedux from "./dealsRedux";
+import orderRedux from "./orderRedux";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     user: userReducer,
     register: registerRedux,
     deals: dealsRedux,
+    order: orderRedux,
   },
 });
 

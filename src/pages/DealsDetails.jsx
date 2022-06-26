@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import {useLocation} from 'react-router-dom';
 
 import {publicRequest} from "../requestMethods";
+import NumberFormat from "react-number-format";
 
 const DealsDetails = () => {
 
@@ -91,7 +92,15 @@ const DealsDetails = () => {
               <div className="details__price">
                 <div className="deals__price d-flex align-items-center justify-content-center">
                   <span className="price__from">From </span>
-                  <span className="price__text">IDR {deal.dealPrice}</span>
+                  <span className="price__text">
+                    <NumberFormat
+                      value={deal.dealPrice}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"IDR "}
+                      renderText={(value) => value}
+                    />
+                  </span>
                 </div>
                 <button className="button__package_options">
                   Package Options

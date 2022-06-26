@@ -11,11 +11,14 @@ import CartItem from "../components/CartItem";
 import "../styles/shopping-cart.css";
 
 import {Link} from 'react-router-dom';
+import NumberFormat from "react-number-format";
 
 const Cart = () => {
   const cartPackages = useSelector((state) => state.cart.cartItems);
 
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+
+  const userData = useSelector((state) => state.user.currentUser);
 
   return (
     <div>
@@ -29,7 +32,9 @@ const Cart = () => {
           </Row>
           <Row>
             <Col lg="12" className="cart__page-button text-center">
-              <button>Continue Shopping</button>
+              <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+                <button>Continue Shopping</button>
+              </Link>
             </Col>
           </Row>
           <Row>
@@ -49,18 +54,36 @@ const Cart = () => {
               </div>
             </Col>
             <Col lg="4">
-              <div className="cart__bottom">
-                <h5>Order Summary</h5>
-                <div className="subtotal__cart d-flex align-items-center justify-content-between">
-                  <h5>Subtotal</h5>
-                  <h6>IDR {totalAmount}</h6>
+              {cartPackages.length > 0 && (
+                <div className="cart__bottom">
+                  <h5>Order Summary</h5>
+                  <div className="subtotal__cart d-flex align-items-center justify-content-between">
+                    <h5>Subtotal</h5>
+                    <h6>
+                      <NumberFormat
+                        value={totalAmount}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"IDR "}
+                        renderText={(value) => value}
+                      />
+                    </h6>
+                  </div>
+                  {!!userData && userData?.accessToken ? (
+                    <Link to="/checkout">
+                      <button>
+                        <div>Checkout</div>
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link to="/login">
+                      <button>
+                        <div>Login to checkout...</div>
+                      </button>
+                    </Link>
+                  )}
                 </div>
-                <Link to="/checkout">
-                  <button>
-                    <div>Checkout</div>
-                  </button>
-                </Link>
-              </div>
+              )}
             </Col>
           </Row>
         </Container>

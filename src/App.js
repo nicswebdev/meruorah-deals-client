@@ -23,7 +23,8 @@ import {
 
 function App() {
   const userData = useSelector((state) => state.user.currentUser);
-  
+  const cartPackages = useSelector((state) => state.cart.cartItems);
+
   return (
     <Router>
       <ScrollToTop>
@@ -33,7 +34,12 @@ function App() {
           <Route path="/category/:categoryId" element={<CategoryListing />} />
           <Route path="/deal-details/:dealId" element={<DealsDetails />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={
+              cartPackages.length > 0 ? <Checkout /> : <Navigate to="/" />
+            }
+          />
           <Route path="/about-us" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route

@@ -4,6 +4,7 @@ import "../styles/cart-item.css";
 
 import { useDispatch } from "react-redux";
 import { cartActions } from "../redux/cartRedux";
+import NumberFormat from "react-number-format";
 
 const CartItem = ({ item }) => {
   const { _id, title, price } = item;
@@ -37,7 +38,16 @@ const CartItem = ({ item }) => {
           <div>
             <h5 className="cart__packages-title">{item.title}</h5>
             <p className="d-flex align-items-center gap-2 cart__packages-price">
-              {item.quantity}x <span>IDR {item.totalPrice}</span>
+              {item.quantity}x{" "}
+              <span>
+                <NumberFormat
+                  value={item.totalPrice}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"IDR "}
+                  renderText={(value) => value}
+                />
+              </span>
             </p>
             <div className="d-flex align-items-center justify-content-between increase__decrease-btn">
               <span className="increase__btn" onClick={incrementItem}>

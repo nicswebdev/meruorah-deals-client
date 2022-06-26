@@ -1,6 +1,7 @@
 import { userActions } from "./userRedux";
 import { registerActions } from "./registerRedux";
 import { dealsActions } from "./dealsRedux";
+import { orderActions } from "./orderRedux";
 import {publicRequest} from "../requestMethods";
 
 import { toast } from "react-toastify";
@@ -40,6 +41,19 @@ export const getDeals = async (dispatch) => {
     dispatch(dealsActions.fetchSuccess(res.data));
   } catch (error) {
     dispatch(dealsActions.fetchFailure());
+    toast.error("Something went wrong...", { position: "top-right" });
+  }
+};
+
+export const order = async (dispatch, order) => {
+  dispatch(orderActions.orderStart());
+
+  try {
+    const res = await publicRequest.post("/orders", order);
+
+    dispatch(orderActions.orderSuccess(res.data));
+  } catch (error) {
+    dispatch(orderActions.orderFailure());
     toast.error("Something went wrong...", { position: "top-right" });
   }
 };

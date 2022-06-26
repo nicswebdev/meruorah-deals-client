@@ -120,6 +120,19 @@ const cartSlice = createSlice({
       );
       localStorage.setItem("totalAmount", JSON.stringify(state.totalAmount));
     },
+
+    clearItems(state, action) {
+      state.cartItems = [];
+      state.totalQuantity = 0;
+      state.totalAmount = 0;
+
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      localStorage.setItem(
+        "totalQuantity",
+        JSON.stringify(state.totalQuantity)
+      );
+      localStorage.setItem("totalAmount", JSON.stringify(state.totalAmount));
+    },
   },
 });
 

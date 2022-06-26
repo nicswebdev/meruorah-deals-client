@@ -6,6 +6,8 @@ import dealsImg5 from "../assets/image/deals5.jpg";
 
 import "../styles/deals-list.css";
 
+import NumberFormat from "react-number-format";
+
 function DealsList() {
   return (
     <div className="deals__list mt-4">

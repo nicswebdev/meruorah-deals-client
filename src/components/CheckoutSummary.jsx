@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberFormat from 'react-number-format';
 
 const CheckoutSummary = ({item}) => {
 
@@ -9,7 +10,15 @@ const CheckoutSummary = ({item}) => {
         <span>Qty : {item.quantity}</span>
       </div>
       <div className="order__total">
-        <h5>IDR {item.totalPrice}</h5>
+        <h5>
+          <NumberFormat
+            value={item.totalPrice}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"IDR "}
+            renderText={(value) => value}
+          />
+        </h5>
       </div>
     </div>
   );

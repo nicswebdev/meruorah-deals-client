@@ -4,6 +4,7 @@ import { cartActions } from "../redux/cartRedux";
 import "../styles/package-card.css";
 
 import {useDispatch} from 'react-redux';
+import NumberFormat from "react-number-format";
 
 function PackageCard(props) {
   const { _id, title, desc, price } = props.item;
@@ -21,7 +22,15 @@ function PackageCard(props) {
         <p>{desc}</p>
       </div>
       <div className="right__side">
-        <h5>IDR {price}</h5>
+        <h5>
+          <NumberFormat
+            value={price}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"IDR "}
+            renderText={(value) => value}
+          />
+        </h5>
         <button className="button__package_options" onClick={handleClick}>
           Add To Cart
         </button>

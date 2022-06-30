@@ -5,6 +5,7 @@ import "../styles/package-card.css";
 
 import {useDispatch} from 'react-redux';
 import NumberFormat from "react-number-format";
+import parser from "html-react-parser";
 
 function PackageCard(props) {
   const { _id, title, desc, price } = props.item;
@@ -19,7 +20,7 @@ function PackageCard(props) {
     <div className="package__card">
       <div className="left__side">
         <h5>{title}</h5>
-        <p>{desc}</p>
+        <p>{parser(`${desc}`)}</p>
       </div>
       <div className="right__side">
         <h5>

@@ -23,22 +23,21 @@ const Footer = () => {
               Website: meruorahlabuanbajo.com
             </p>
           </Col>
-          <Col lg="3" md="4" sm="6">
+          <Col lg="3" md="4" sm="6" className="footer__help">
             <h5 className="footer__title">HELP</h5>
             <ul>
+              <li>About Us</li>
               <li>Contact Us</li>
-              <li>Contact Us</li>
-              <li>Contact Us</li>
-              <li>Contact Us</li>
+              <li>Privacy Policy</li>
             </ul>
           </Col>
-          <Col lg="3" md="4" sm="6">
+          <Col lg="3" md="4" sm="6" className="footer__partner">
             <h5 className="footer__title">OUR PARTNER BRAND</h5>
             <ul>
-              <li>Contact Us</li>
-              <li>Contact Us</li>
-              <li>Contact Us</li>
-              <li>Contact Us</li>
+              <li>Meruorah Komodo Labuan Bajo</li>
+              <li>Brand 1</li>
+              <li>Brand 2</li>
+              <li>Brand 3</li>
             </ul>
           </Col>
           <Col lg="3" md="4" sm="6">

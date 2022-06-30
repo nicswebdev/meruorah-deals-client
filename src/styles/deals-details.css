@@ -22,6 +22,11 @@
     font-family: 'Proxima';
     font-weight: 600;
     margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.deals__subtitle {
+    padding-top: 10px;
 }
 
 .deals__title .deals__subtitle, .deals__title .deals__descriptions {
@@ -29,17 +34,18 @@
 }
 
 .right__deals__col {
+    
+    /* padding-top: 20px; */
+}
+
+.details__price {
+    /* margin-top: 40px; */
     border: 1px solid #dedede;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 20px;
-}
-
-.details__price {
-    margin-top: 40px;
-    padding: 30px 80px;
+    padding: 10px 80px;
 }
 
 .details__price .price__text {

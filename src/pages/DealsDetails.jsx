@@ -16,6 +16,8 @@ import {useLocation} from 'react-router-dom';
 import {publicRequest} from "../requestMethods";
 import NumberFormat from "react-number-format";
 
+import parser from "html-react-parser";
+
 const DealsDetails = () => {
 
   const location = useLocation();
@@ -72,7 +74,7 @@ const DealsDetails = () => {
         <Container>
           <Row>
             <Col lg="12">
-              <img src={banner} alt="banner-img" className="w-100" />
+              <img src={deal.img} alt="banner-img" className="w-100" />
             </Col>
           </Row>
         </Container>
@@ -84,11 +86,11 @@ const DealsDetails = () => {
             <Col lg="8" className="left__deals__col">
               <div className="deals__title">
                 <h5>{deal.title}</h5>
-                <div className="deals__subtitle">{deal.desc}</div>
+                <div className="deals__subtitle">{parser(`${deal.desc}`)}</div>
               </div>
             </Col>
             <Col lg="4" className="right__deals__col">
-              <img src={logo} alt="logo-img" />
+              {/* <img src={logo} alt="logo-img" /> */}
               <div className="details__price">
                 <div className="deals__price d-flex align-items-center justify-content-center">
                   <span className="price__from">From </span>
@@ -122,6 +124,14 @@ const DealsDetails = () => {
                 <PackageCard item={item} />
               </Col>
             ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section className="section__tc">
+        <Container>
+          <Row>
+            <Col lg="12" style={{paddingTop: "20px", paddingBottom: "20px"}}>{parser(`${deal.tc}`)}</Col>
           </Row>
         </Container>
       </section>

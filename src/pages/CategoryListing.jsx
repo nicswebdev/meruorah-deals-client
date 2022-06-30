@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 
-import heroImg from "../assets/image/header.jpg";
+import heroImg2 from "../assets/image/header2.jpg";
 
 import "../styles/hero-section.css";
 import "../styles/category.css";
@@ -10,6 +10,9 @@ import "../styles/category.css";
 import DealsList from "../components/DealsList";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+import { useSelector, useDispatch } from "react-redux";
+import { getDeals } from "../redux/apiCalls";
 
 const category = [
   {
@@ -51,9 +54,17 @@ const category = [
 ];
 
 const CategoryListing = () => {
+
+  const deals = useSelector((state) => state.deals.currentDeals);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getDeals(dispatch);
+  }, []);
+
   return (
     <div>
-        <Header />
+      <Header />
       <section className="hero__section">
         <div className="hero__content">
           <h5>Plan Your Travel Now!</h5>
@@ -73,7 +84,7 @@ const CategoryListing = () => {
           </div>
         </div>
         <div className="hero__img">
-          <img src={heroImg} alt="hero-img" className="w-100" />
+          <img src={heroImg2} alt="hero-img" className="w-100" />
         </div>
       </section>
 
@@ -89,8 +100,9 @@ const CategoryListing = () => {
               </ul>
             </Col>
             <Col lg="9" className="deals__column">
-              <DealsList />
-              <DealsList />
+              {deals.map((item) => (
+                <DealsList key={item._id} item={item} />
+              ))}
             </Col>
           </Row>
         </Container>

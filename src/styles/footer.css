@@ -18,6 +18,17 @@
     font-family: 'Proxima';
 }
 
+.footer__help {
+    padding-left: 50px !important;
+}
+
+.footer__help ul, .footer__partner ul {
+    list-style-type: none;
+    padding-inline-start: 0em;
+}
+
+
+
 .newsletter {
     padding: 7px 25px;
     border: 1px solid #FFF;

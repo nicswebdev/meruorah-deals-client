@@ -14,7 +14,7 @@ function DealsCard({item}) {
   return (
     <div className="deals_item">
       <div className="deals__img">
-        <img src={dealsImg} alt="deals-img" className="w-100" />
+        <img src={item.img} alt="deals-img" className="w-100" />
       </div>
       <div className="deals__content">
         <h6>Hotel</h6>

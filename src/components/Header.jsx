@@ -6,11 +6,46 @@ import logo from "../assets/image/logo3.png";
 
 import { Container } from "reactstrap";
 
-import {Link} from 'react-router-dom';
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../redux/userRedux";
 
 const Header = () => {
+
+  const nav__links = [
+    {
+      display: "Home",
+      path: "/",
+    },
+    {
+      display: "Hotels",
+      path: "/category/1",
+    },
+    {
+      display: "Restaurant",
+      path: "/category/2",
+    },
+    {
+      display: "Spa",
+      path: "/category/3",
+    },
+    {
+      display: "Cruise",
+      path: "/category/4",
+    },
+    {
+      display: "Tours",
+      path: "/category/5",
+    },
+    {
+      display: "About Us",
+      path: "/about-us",
+    },
+    {
+      display: "Contact Us",
+      path: "/contact",
+    },
+  ];
 
   const menuRef = useRef(null);
   const headerRef = useRef(null);
@@ -86,7 +121,19 @@ const Header = () => {
             </Link>
           </div>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-            <div className="menu d-flex align-items-center gap-5"></div>
+            <div className="menu d-flex align-items-center">
+              {nav__links.map((item, index) => (
+                <NavLink
+                  to={item.path}
+                  key={index}
+                  className={(navClass) =>
+                    navClass.isActive ? "active__menu" : ""
+                  }
+                >
+                  {item.display}
+                </NavLink>
+              ))}
+            </div>
           </div>
           <div className="nav__right d-flex align-items-center gap-3">
             <span className="cart__icon">

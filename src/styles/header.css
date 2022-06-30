@@ -43,6 +43,10 @@
   text-align: center;
 }
 
+.menu {
+  gap: 35px;
+}
+
 .menu a {
   font-weight: 500;
   font-size: .9rem;
@@ -51,6 +55,7 @@
   color: #19191a;
   font-family: 'Proxima';
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .menu a:hover {

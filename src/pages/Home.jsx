@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 
 import { Container, Row, Col } from "reactstrap";
 
@@ -9,12 +9,6 @@ import "../styles/home.css";
 
 import Highlight from "../components/Highlight";
 import DealsCard from "../components/DealsCard";
-
-import dealsImg from "../assets/image/deals1.jpg";
-import dealsImg2 from "../assets/image/deals2.jpg";
-import dealsImg3 from "../assets/image/deals3.jpg";
-import dealsImg4 from "../assets/image/deals4.jpg";
-import dealsImg5 from "../assets/image/deals5.jpg";
 
 import logo from "../assets/image/logo3.png";
 import Header from "../components/Header";
@@ -79,7 +73,7 @@ const Home = () => {
 
   const deals = useSelector((state) => state.deals.currentDeals);
   const dispatch = useDispatch();
-  const { isFetching } = useSelector((state) => state.deals);
+  //const { isFetching } = useSelector((state) => state.deals);
 
   useEffect(() => {
     getDeals(dispatch);

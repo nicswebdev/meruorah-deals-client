@@ -1,13 +1,14 @@
 .footer {
     padding-top: 50px;
     padding-bottom: 0px;
-    background: #A26B46;
-    color: #FFF;
-    font-family: 'Proxima';
+    background: #b09963;
+    color: #fff;
+    font-family: "Proxima";
 }
 
-.footer p, .footer ul li {
-    font-size: .9rem;
+.footer p,
+.footer ul li {
+    font-size: 0.9rem;
     line-height: 28px;
 }
 
@@ -15,23 +16,22 @@
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
-    font-family: 'Proxima';
+    font-family: "Proxima";
 }
 
 .footer__help {
     padding-left: 50px !important;
 }
 
-.footer__help ul, .footer__partner ul {
+.footer__help ul,
+.footer__partner ul {
     list-style-type: none;
     padding-inline-start: 0em;
 }
 
-
-
 .newsletter {
     padding: 7px 25px;
-    border: 1px solid #FFF;
+    border: 1px solid #fff;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
@@ -50,10 +50,10 @@
 }
 
 .newsletter input::placeholder {
-    color: #FFF;
+    color: #fff;
 }
 
 .copyright__text {
-    font-size: .8rem;
+    font-size: 0.8rem;
     text-align: center;
 }

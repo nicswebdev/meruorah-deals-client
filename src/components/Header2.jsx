@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-import "../styles/header.css";
+import "../styles/header2.css";
 
 import logo from "../assets/image/logo5.png";
 
@@ -10,7 +10,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../redux/userRedux";
 
-const Header = () => {
+const Header2 = () => {
     const nav__links = [
         {
             display: "Home",
@@ -48,7 +48,7 @@ const Header = () => {
 
     const menuRef = useRef(null);
     const headerRef = useRef(null);
-    const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
+    const toggleMenu = () => menuRef.current.classList.toggle("show__menu2");
 
     const totalQuantity = useSelector((state) => state.cart.totalQuantity);
     const userData = useSelector((state) => state.user.currentUser);
@@ -61,9 +61,9 @@ const Header = () => {
                 document.body.scrollTop > 80 ||
                 document.documentElement.scrollTop > 80
             ) {
-                headerRef.current.classList.add("header__shrink");
+                headerRef.current.classList.add("header__shrink2");
             } else {
-                headerRef.current.classList.remove("header__shrink");
+                headerRef.current.classList.remove("header__shrink2");
             }
         });
 
@@ -75,9 +75,9 @@ const Header = () => {
     };
 
     return (
-        <header className="header" ref={headerRef}>
-            <div className="top__menu">
-                <div className="top__menu__left d-flex align-items-center gap-3">
+        <header className="header2" ref={headerRef}>
+            <div className="top__menu2">
+                <div className="top__menu__left2 d-flex align-items-center gap-3">
                     <div className="d-flex align-items-center gap-1">
                         <Link to="tel:+623852440234">
                             <i class="ri-phone-line"></i> +62 385 2440234
@@ -89,9 +89,9 @@ const Header = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="top__menu__right d-flex align-items-center gap-3">
+                <div className="top__menu__right2 d-flex align-items-center gap-3">
                     {!!userData && userData?.accessToken ? (
-                        <div className="logout__btn d-flex align-items-center gap-1">
+                        <div className="logout__btn2 d-flex align-items-center gap-1">
                             <div
                                 style={{ cursor: "pointer" }}
                                 onClick={handleSignOut}
@@ -115,25 +115,25 @@ const Header = () => {
                     )}
                 </div>
             </div>
-            <Container className="header__container">
-                <div className="nav__wrapper d-flex align-items-center justify-content-between">
-                    <div className="logo d-flex align-items-center">
+            <Container className="header__container2">
+                <div className="nav__wrapper2 d-flex align-items-center justify-content-between">
+                    <div className="logo2 d-flex align-items-center">
                         <Link to="/">
                             <img src={logo} alt="logo" />
                         </Link>
                     </div>
                     <div
-                        className="navigation"
+                        className="navigation2"
                         ref={menuRef}
                         onClick={toggleMenu}
                     >
-                        <div className="menu d-flex align-items-center">
+                        <div className="menu2 d-flex align-items-center">
                             {nav__links.map((item, index) => (
                                 <NavLink
                                     to={item.path}
                                     key={index}
                                     className={(navClass) =>
-                                        navClass.isActive ? "active__menu" : ""
+                                        navClass.isActive ? "active__menu2" : ""
                                     }
                                 >
                                     {item.display}
@@ -141,16 +141,16 @@ const Header = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="nav__right d-flex align-items-center gap-3">
-                        <span className="cart__icon">
+                    <div className="nav__right2 d-flex align-items-center gap-3">
+                        <span className="cart__icon2">
                             <Link to="/cart">
                                 <i class="ri-shopping-basket-line"></i>
-                                <span className="cart__badge">
+                                <span className="cart__badge2">
                                     {totalQuantity}
                                 </span>
                             </Link>
                         </span>
-                        <span className="mobile__menu">
+                        <span className="mobile__menu2">
                             <i class="ri-menu-line"></i>
                         </span>
                     </div>
@@ -160,4 +160,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Header2;

@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 
@@ -8,136 +8,144 @@ import logo from "../assets/image/logo3.png";
 import "../styles/deals-details.css";
 import PackageCard from "../components/PackageCard";
 
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import {useLocation} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
-import {publicRequest} from "../requestMethods";
+import { publicRequest } from "../requestMethods";
 import NumberFormat from "react-number-format";
 
 import parser from "html-react-parser";
+import Header2 from "../components/Header2";
 
 const DealsDetails = () => {
+    const location = useLocation();
 
-  const location = useLocation();
-   
-  const dealId = location.pathname.split("/")[2];
+    const dealId = location.pathname.split("/")[2];
 
-  const [packages, setPackages] = useState([]);
-  const [deal, setDeal] = useState({});
+    const [packages, setPackages] = useState([]);
+    const [deal, setDeal] = useState({});
 
-  useEffect(() => {
-    const getPackages = async () => {
-      try {
-        const res = await publicRequest.get(
-          "/packages?deal=" + dealId
-        );
+    useEffect(() => {
+        const getPackages = async () => {
+            try {
+                const res = await publicRequest.get("/packages?deal=" + dealId);
 
-        setPackages(res.data);
-      } catch (error) {}
-    };
+                setPackages(res.data);
+            } catch (error) {}
+        };
 
-    getPackages();
-  }, [dealId]);
+        getPackages();
+    }, [dealId]);
 
-  useEffect(() => {
-    const getDeal = async () => {
-      try {
-        const res = await publicRequest.get(
-          "/deals/find/" + dealId
-        );
-        setDeal(res.data);
-      } catch (error) {}
-    };
+    useEffect(() => {
+        const getDeal = async () => {
+            try {
+                const res = await publicRequest.get("/deals/find/" + dealId);
+                setDeal(res.data);
+            } catch (error) {}
+        };
 
-    getDeal();
-  }, [dealId]);
-  
-  return (
-    <div>
-      <Header />
-      <section className="breadcrumb__deals">
-        <Container>
-          <Row>
-            <Col lg="12">
-              <h5>
-                Hotel <i class="ri-arrow-right-s-line"></i> Meruorah Komodo
-                Labuan Bajo <i class="ri-arrow-right-s-line"></i> {deal.title}
-              </h5>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+        getDeal();
+    }, [dealId]);
 
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12">
-              <img src={deal.img} alt="banner-img" className="w-100" />
-            </Col>
-          </Row>
-        </Container>
-      </section>
+    return (
+        <div>
+            <Header2 />
 
-      <section className="section__deals">
-        <Container>
-          <Row>
-            <Col lg="8" className="left__deals__col">
-              <div className="deals__title">
-                <h5>{deal.title}</h5>
-                <div className="deals__subtitle">{parser(`${deal.desc}`)}</div>
-              </div>
-            </Col>
-            <Col lg="4" className="right__deals__col">
-              {/* <img src={logo} alt="logo-img" /> */}
-              <div className="details__price">
-                <div className="deals__price d-flex align-items-center justify-content-center">
-                  <span className="price__from">From </span>
-                  <span className="price__text">
-                    <NumberFormat
-                      value={deal.dealPrice}
-                      displayType={"text"}
-                      thousandSeparator={true}
-                      prefix={"IDR "}
-                      renderText={(value) => value}
-                    />
-                  </span>
-                </div>
-                <button className="button__package_options">
-                  Package Options
-                </button>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+            <section className="section__dealsimg">
+                <Container>
+                    <Row>
+                        <Col lg="12">
+                            <img
+                                src={deal.img}
+                                alt="banner-img"
+                                className="w-100"
+                            />
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
 
-      <section className="section__package">
-        <Container>
-          <Row>
-            <Col lg="12">
-              <h5>Package Options</h5>
-            </Col>
-            {packages.map((item) => (
-              <Col lg="12" className="mt-4" key={item._id}>
-                <PackageCard item={item} />
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+            <section className="section__deals">
+                <Container>
+                    <Row>
+                        <Col className="left__deals__col">
+                            <div className="deals__title">
+                                <h5>{deal.title}</h5>
+                                <div className="deals__subtitle">
+                                    {parser(`${deal.desc}`)}
+                                </div>
+                            </div>
+                            <div className="details__price">
+                                <div className="deals__price">
+                                    <span className="price__from">From </span>
+                                    <span className="price__text">
+                                        <NumberFormat
+                                            value={deal.dealPrice}
+                                            displayType={"text"}
+                                            thousandSeparator={true}
+                                            prefix={"IDR "}
+                                            renderText={(value) => value}
+                                        />
+                                    </span>
+                                    <span className="fixed__price__text">
+                                        <NumberFormat
+                                            value={deal.fixedPrice}
+                                            displayType={"text"}
+                                            thousandSeparator={true}
+                                            prefix={"IDR "}
+                                            renderText={(value) => value}
+                                        />
+                                    </span>
+                                </div>
+                                <div className="option__link__view">
+                                    View Options{" "}
+                                    <i class="ri-arrow-right-s-line"></i>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
 
-      <section className="section__tc">
-        <Container>
-          <Row>
-            <Col lg="12" style={{paddingTop: "20px", paddingBottom: "20px"}}>{parser(`${deal.tc}`)}</Col>
-          </Row>
-        </Container>
-      </section>
-      <Footer />
-    </div>
-  );
+            <section className="section__package">
+                <Container>
+                    <Row>
+                        <Col
+                            lg="12"
+                            className="package__options_title d-flex align-items-center"
+                        >
+                            <h5>Package Options</h5>
+                        </Col>
+                        {packages.map((item) => (
+                            <Col lg="12" className="mt-4" key={item._id}>
+                                <PackageCard item={item} />
+                            </Col>
+                        ))}
+                    </Row>
+                </Container>
+            </section>
+
+            <section className="section__tc">
+                <Container>
+                    <Row>
+                        <Col
+                            lg="12"
+                            style={{
+                                paddingTop: "20px",
+                                paddingBottom: "20px",
+                                fontFamily: "Jost",
+                            }}
+                        >
+                            {parser(`${deal.tc}`)}
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+            <Footer />
+        </div>
+    );
 };
 
 export default DealsDetails;

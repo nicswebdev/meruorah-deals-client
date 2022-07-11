@@ -1,6 +1,5 @@
-
 .package__card {
-    background: #FFF;
+    background: #f1f1f1;
     padding: 30px 20px;
     display: flex;
     justify-content: space-between;
@@ -8,24 +7,52 @@
 
 .left__side {
     width: 75%;
-    border-right: 1px solid #cecece;
 }
 
 .left__side h5 {
-    font-family: 'Proxima';
-    font-weight: 600;
+    font-family: "Jost";
+    font-weight: 500;
     font-size: 1.4rem;
     margin-bottom: 10px;
+    color: #a26b46;
 }
 
 .left__side p {
-    font-size: .9rem;
+    font-size: 0.9rem;
+    font-family: "Jost";
 }
 
 .right__side {
     width: 25%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.right__side h5 {
+    font-family: "Jost";
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.package__link__view {
+    font-family: "Jost";
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 20px;
+    letter-spacing: 3px;
+    position: relative;
+    width: fit-content;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #717171;
+}
+
+.package__link__view i {
+    font-size: 1.4rem;
+    position: absolute;
+    top: -7px;
 }

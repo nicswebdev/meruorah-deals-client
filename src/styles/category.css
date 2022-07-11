@@ -1,14 +1,30 @@
 .category__section {
-    background: #cecece;
     padding-top: 60px;
     padding-bottom: 100px;
 }
 
+.heading__category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.heading__category h5 {
+    font-family: "Jost";
+    color: #a26b46;
+    font-size: 1.5rem;
+}
+
 .category__column {
-    background: #FFF;
+    background: #fff;
     border-radius: 3px;
     padding: 20px;
     padding-left: 20px !important;
+}
+
+.category__column h5 {
+    font-family: "Jost";
+    color: #a26b46;
 }
 
 .category__column ul {
@@ -17,8 +33,11 @@
 }
 
 .category__column ul li {
-    line-height: 60px;
-    font-family: 'Proxima';
+    line-height: 50px;
+    font-family: "Jost";
+    background: #f3f3f3;
+    margin-bottom: 20px;
+    padding-left: 15px;
 }
 
 .deals__column {

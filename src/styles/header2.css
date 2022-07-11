@@ -1,16 +1,12 @@
-.header {
-    position: fixed;
-    top: 0;
+.header2 {
     width: 100%;
     height: 110px;
     line-height: 115px;
     /* box-shadow: 5px 5px 10px -5px #cecece; */
-    background: transparent;
-    z-index: 9999;
-    transition: 0.32 ease-in-out;
+    background: #b09963;
 }
 
-.top__menu {
+.top__menu2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,48 +16,48 @@
     padding: 0 20px 0 20px;
 }
 
-.top__menu a {
+.top__menu2 a {
     color: #fff;
     text-decoration: none;
     font-size: 0.9rem;
     font-family: "Jost";
 }
 
-.top__menu a:hover {
+.top__menu2 a:hover {
     color: #ffffff;
     text-decoration: none;
     font-size: 0.9rem;
 }
 
-.top__menu .logout__btn {
+.top__menu2 .logout__btn2 {
     color: #ffffff;
     text-decoration: none;
     font-size: 0.9rem;
     font-family: "Jost";
 }
 
-.header__container,
-.nav__wrapper {
+.header__container2,
+.nav__wrapper2 {
     height: 75px;
 }
 
-.logo {
+.logo2 {
     text-align: center;
     width: 15%;
     justify-content: center;
 }
 
-.navigation {
+.navigation2 {
     width: 70%;
     text-align: center;
 }
 
-.menu {
+.menu2 {
     gap: 30px;
     justify-content: center;
 }
 
-.menu a {
+.menu2 a {
     font-weight: 500;
     font-size: 0.9rem;
     transition: 0.3s;
@@ -72,36 +68,36 @@
     cursor: pointer;
 }
 
-.menu a:hover {
+.menu2 a:hover {
     color: #fff;
 }
 
-.active__menu {
+.active__menu2 {
     color: #fff !important;
 }
 
-.nav__right {
+.nav__right2 {
     width: 15%;
     justify-content: center;
 }
 
-.cart__icon i,
-.mobile__menu i {
+.cart__icon2 i,
+.mobile__menu2 i {
     font-size: 1.3rem;
     cursor: pointer;
 }
 
-.cart__icon {
+.cart__icon2 {
     position: relative;
 }
 
-.cart__icon a,
-.cart__icon a:hover {
+.cart__icon2 a,
+.cart__icon2 a:hover {
     color: #fff;
     text-decoration: none;
 }
 
-.cart__badge {
+.cart__badge2 {
     position: absolute;
     top: 35px;
     right: -10px;
@@ -117,12 +113,12 @@
     justify-content: center;
 }
 
-.mobile__menu {
+.mobile__menu2 {
     font-weight: 600;
     display: none;
 }
 
-.header__shrink {
+.header__shrink2 {
     position: sticky;
     top: 0;
     left: 0;
@@ -132,11 +128,11 @@
 }
 
 @media only screen and (max-width: 992px) {
-    .top__menu {
+    .top__menu2 {
         display: none !important;
     }
 
-    .navigation {
+    .navigation2 {
         position: fixed;
         top: 0;
         left: 0;
@@ -147,11 +143,11 @@
         display: none;
     }
 
-    .logo img {
+    .logo2 img {
         width: calc(100% - 20%);
     }
 
-    .menu {
+    .menu2 {
         position: absolute;
         top: 0;
         right: 0;
@@ -165,31 +161,31 @@
         line-height: 20px;
     }
 
-    .menu a {
+    .menu2 a {
         font-size: 0.9rem;
     }
 
-    .mobile__menu {
+    .mobile__menu2 {
         display: block;
     }
 
-    .show__menu {
+    .show__menu2 {
         display: block;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .top__menu {
+    .top__menu2 {
         display: none !important;
     }
 
-    .header {
+    .header2 {
         width: 100%;
         height: 50px;
         line-height: 50px;
     }
 
-    .logo img {
+    .logo2 img {
         width: calc(100% - 30%);
     }
 }

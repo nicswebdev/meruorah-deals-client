@@ -1,17 +1,16 @@
-
-.breadcrumb__deals {
-    padding-top: 20px;
+.section__dealsimg {
+    padding-top: 50px;
     padding-bottom: 20px;
 }
 
-.breadcrumb__deals h5 {
-    font-family: 'Proxima';
-    font-size: 1rem;
+.section__dealsimg img {
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
 }
 
 .section__deals {
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 40px;
 }
 
 .left__deals__col {
@@ -19,54 +18,96 @@
 }
 
 .deals__title h5 {
-    font-family: 'Proxima';
+    font-family: "Jost";
     font-weight: 600;
     margin-bottom: 10px;
     font-size: 1.4rem;
+    color: #a26b46;
 }
 
 .deals__subtitle {
     padding-top: 10px;
+    font-family: "Jost";
 }
 
-.deals__title .deals__subtitle, .deals__title .deals__descriptions {
-    font-size: .9rem;
+.deals__title .deals__subtitle,
+.deals__title .deals__descriptions {
+    font-size: 1.1rem;
+    color: #717171;
 }
 
 .right__deals__col {
-    
     /* padding-top: 20px; */
 }
 
 .details__price {
-    /* margin-top: 40px; */
-    border: 1px solid #dedede;
+    margin-top: 30px;
+}
+
+.deals__price {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 80px;
 }
 
 .details__price .price__text {
-    font-size: 1.4rem;
-    margin-left: 10px;
+    font-size: 1.9rem;
+    font-weight: 400;
+}
+
+.details__price .fixed__price__text {
+    font-size: 1.3rem;
+    color: #cecece;
+    font-weight: 400;
+    position: relative;
+    width: fit-content;
+}
+
+.details__price .fixed__price__text::before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    border-bottom: 1px solid red;
+    -webkit-transform: skewY(-10deg);
+    transform: skewY(-10deg);
 }
 
 .details__price .price__from {
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
-.button__package_options {
-    padding: 7px 25px;
-    background: #A26B46;
-    border: 1px solid #A26B46;
+.option__link__view {
+    font-family: "Jost";
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 300;
     margin-top: 20px;
-    color: #FFFFFF;
+    letter-spacing: 3px;
+    position: relative;
+    border-bottom: 1px solid #717171;
+    width: fit-content;
+}
+
+.option__link__view i {
+    font-size: 1.4rem;
+    position: absolute;
+    top: -7px;
 }
 
 .section__package {
     padding-top: 30px;
     padding-bottom: 60px;
-    background: #cecece;
+}
+
+.package__options_title {
+    text-align: center;
+    justify-content: center;
+}
+
+.package__options_title h5 {
+    font-weight: 500;
+    font-size: 2.8rem;
+    color: #a26b46;
+    letter-spacing: 2px;
 }

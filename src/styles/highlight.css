@@ -1,14 +1,18 @@
-
 .section__highlight {
-    background-color: #dedede;
+    background-color: #fff;
 }
 
 .row__highlight {
-    background: #FFF;
+    background: #fff;
+}
+
+.highlight__img img {
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
 }
 
 .highlight__container {
-    padding: 50px 150px 50px 150px !important;
+    padding: 50px 130px 50px 130px !important;
 }
 
 .hightlight__right {
@@ -21,28 +25,69 @@
 .highlight__content {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 15px 15px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 25px 0px 25px 25px;
 }
 
 .highlight__content h5 {
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 70px;
-    margin-bottom: 70px;
-    font-family: 'Proxima';
-    font-weight: 600;
+    font-size: 1.8rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: "Jost";
+    font-weight: 500;
 }
 
 .highlight__content .price .deals__price {
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-family: 'Proxima';
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-family: "Jost";
+}
+
+.highlight__content .price {
+    display: flex;
+    flex-direction: column;
 }
 
 .highlight__content .price .fixed__price {
-    font-size: .8rem;
+    font-size: 1.2rem;
     color: #cecece;
-    font-family: 'Proxima';
+    font-family: "Jost";
+}
+
+.highlight__content .fixed__price {
+    position: relative;
+    width: fit-content;
+}
+
+.highlight__content .fixed__price::before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    border-bottom: 1px solid red;
+    -webkit-transform: skewY(-10deg);
+    transform: skewY(-10deg);
+}
+
+.highlight__logo {
+    width: 8rem;
+    align-self: center;
+}
+
+.link__view {
+    font-family: "Jost";
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 20px;
+    letter-spacing: 3px;
+    position: relative;
+}
+
+.link__view i {
+    font-size: 1.4rem;
+    position: absolute;
+    top: -7px;
 }

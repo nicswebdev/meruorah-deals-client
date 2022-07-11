@@ -1,21 +1,24 @@
-
 .deals__section {
     padding-top: 60px;
 }
 
 .best__deals {
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
 }
 
 .heading__title {
-    font-weight: 600;
-    font-size: 1.4rem;
-    color: #A26B46;
+    font-weight: 500;
+    font-size: 2.8rem;
+    color: #a26b46;
+    letter-spacing: 2px;
 }
 
 .heading__paragraph {
-    font-size: .9rem;
-    font-family: 'Proxima';
+    font-size: 1.1rem;
+    font-family: "Jost";
+    color: #717171;
 }
 
 .button__part {
@@ -23,10 +26,62 @@
     background: transparent;
     padding: 7px 25px;
     font-weight: 500;
-    font-family: 'Proxima';
+    font-family: "Proxima";
+}
+
+.featured__img {
+    border-radius: 15px;
+}
+
+.featured__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 25px 0px 25px 25px;
+}
+
+.featured__content h5 {
+    font-size: 1.5rem;
+    font-family: "Jost";
+    font-weight: 500;
+    color: #a26b46;
+}
+
+.featured__content .excerpt {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    font-weight: 300;
+    font-family: "Jost";
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.featured__content .price .fixed__price {
+    font-size: 1.2rem;
+    color: #cecece;
+    font-family: "Jost";
 }
 
 .brand__section {
     padding-top: 60px;
     padding-bottom: 100px;
+}
+
+.brand__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    padding: 20px;
+}
+
+.logo__brand-img {
+    width: 8rem;
+}
+
+.featured__deals-slider {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

@@ -91,3 +91,25 @@
     position: absolute;
     top: -7px;
 }
+
+@media only screen and (max-width: 768px) {
+    .highlight__container {
+        padding: 30px 20px 30px 20px !important;
+    }
+
+    .highlight__content h5 {
+        font-size: 1.5rem;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        font-family: "Jost";
+        font-weight: 500;
+    }
+
+    .highlight__img img {
+        width: 8rem;
+    }
+
+    .highlight__content {
+        padding: 25px 25px 25px 25px;
+    }
+}

@@ -57,3 +57,9 @@
     font-size: 0.8rem;
     text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+    .footer__help {
+        padding-left: calc(1.5rem * 0.5) !important;
+    }
+}

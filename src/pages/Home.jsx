@@ -134,8 +134,67 @@ const Home = () => {
                             </div>
                         </Col>
                     </Row>
-                    {deals.map((item, index) =>
-                        !(index % 2) ? (
+                    <div className="desktop">
+                        {deals.map((item, index) =>
+                            !(index % 2) ? (
+                                <Row className="mb-5">
+                                    <Col lg="7">
+                                        <img
+                                            src={item.img}
+                                            alt="deals-img"
+                                            className="w-100 featured__img"
+                                        />
+                                    </Col>
+                                    <Col lg="5" className="featured__content">
+                                        <h5>{item.title}</h5>
+                                        <div className="excerpt">
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Pariatur, ea. Laboriosam earum quia
+                                            repellendus, accusamus maiores
+                                            voluptatibus necessitatibus quod
+                                            recusandae cum consequatur error
+                                            neque ex. Nulla non perspiciatis
+                                            quam modi.
+                                        </div>
+                                        <div className="link__view">
+                                            View Details{" "}
+                                            <i class="ri-arrow-right-s-line"></i>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            ) : (
+                                <Row className="mb-5">
+                                    <Col lg="5" className="featured__content">
+                                        <h5>{item.title}</h5>
+                                        <div className="excerpt">
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Pariatur, ea. Laboriosam earum quia
+                                            repellendus, accusamus maiores
+                                            voluptatibus necessitatibus quod
+                                            recusandae cum consequatur error
+                                            neque ex. Nulla non perspiciatis
+                                            quam modi.
+                                        </div>
+                                        <div className="link__view">
+                                            View Details{" "}
+                                            <i class="ri-arrow-right-s-line"></i>
+                                        </div>
+                                    </Col>
+                                    <Col lg="7">
+                                        <img
+                                            src={item.img}
+                                            alt="deals-img"
+                                            className="w-100 featured__img"
+                                        />
+                                    </Col>
+                                </Row>
+                            )
+                        )}
+                    </div>
+                    <div className="mobile">
+                        {deals.map((item, index) => (
                             <Row className="mb-5">
                                 <Col lg="7">
                                     <img
@@ -161,34 +220,8 @@ const Home = () => {
                                     </div>
                                 </Col>
                             </Row>
-                        ) : (
-                            <Row className="mb-5">
-                                <Col lg="5" className="featured__content">
-                                    <h5>{item.title}</h5>
-                                    <div className="excerpt">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Pariatur, ea.
-                                        Laboriosam earum quia repellendus,
-                                        accusamus maiores voluptatibus
-                                        necessitatibus quod recusandae cum
-                                        consequatur error neque ex. Nulla non
-                                        perspiciatis quam modi.
-                                    </div>
-                                    <div className="link__view">
-                                        View Details{" "}
-                                        <i class="ri-arrow-right-s-line"></i>
-                                    </div>
-                                </Col>
-                                <Col lg="7">
-                                    <img
-                                        src={item.img}
-                                        alt="deals-img"
-                                        className="w-100 featured__img"
-                                    />
-                                </Col>
-                            </Row>
-                        )
-                    )}
+                        ))}
+                    </div>
                 </Container>
             </section>
 

@@ -43,3 +43,9 @@
 .deals__column {
     padding-left: 50px !important;
 }
+
+@media only screen and (max-width: 768px) {
+    .deals__column {
+        padding-left: calc(1.5rem * 0.5) !important;
+    }
+}

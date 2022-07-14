@@ -17,6 +17,8 @@ import NumberFormat from "react-number-format";
 
 import parser from "html-react-parser";
 import Header2 from "../components/Header2";
+import Spinner from "../components/Spinner";
+import Header from "../components/Header";
 
 const DealsDetails = () => {
     const location = useLocation();
@@ -25,6 +27,7 @@ const DealsDetails = () => {
 
     const [packages, setPackages] = useState([]);
     const [deal, setDeal] = useState({});
+    const [isLoadingDeals, setIsLoadingDeals] = useState(false);
 
     useEffect(() => {
         const getPackages = async () => {
@@ -39,19 +42,27 @@ const DealsDetails = () => {
     }, [dealId]);
 
     useEffect(() => {
+        setIsLoadingDeals(true);
         const getDeal = async () => {
             try {
                 const res = await publicRequest.get("/deals/find/" + dealId);
                 setDeal(res.data);
-            } catch (error) {}
+                setIsLoadingDeals(false);
+            } catch (error) {
+                setIsLoadingDeals(false);
+            }
         };
 
         getDeal();
     }, [dealId]);
 
+    if (isLoadingDeals) {
+        return <Spinner />;
+    }
+
     return (
         <div>
-            <Header2 />
+            <Header type="woImg" />
 
             <section className="section__dealsimg">
                 <Container>

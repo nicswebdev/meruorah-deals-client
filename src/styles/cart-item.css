@@ -5,7 +5,7 @@
 }
 
 .cart__packages-title {
-    font-family: 'Proxima';
+    font-family: "Jost";
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -17,16 +17,17 @@
 .cart__packages-price span {
     font-size: 1rem;
     font-weight: 600;
-    color: #A26B46;
+    color: #a26b46;
 }
 
 .increase__decrease-btn {
-    background: #A26B46;
-    color: #FFF;
+    background: #a26b46;
+    color: #fff;
     padding: 2px 5px;
 }
 
-.increase__btn, .decrease__btn {
+.increase__btn,
+.decrease__btn {
     cursor: pointer;
 }
 

@@ -2,6 +2,7 @@ import React from "react";
 
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import Header2 from "../components/Header2";
 
 import "../styles/contact.css";
@@ -10,7 +11,7 @@ import "../styles/login.css";
 const Contact = () => {
     return (
         <div>
-            <Header2 />
+            <Header type="woImg" />
             <section className="section__contact">
                 <Container>
                     <Row>

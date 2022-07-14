@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles/login.css";
 
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const Register = () => {
     const [fname, setFname] = useState("");
@@ -32,7 +33,7 @@ const Register = () => {
 
     return (
         <div>
-            <Header2 />
+            <Header type="woImg" />
             <section className="login__section">
                 <Container>
                     <Row>

@@ -9,8 +9,30 @@ import { Container } from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../redux/userRedux";
+import { getNavCategoriesData, resetNavCategory } from "../redux/categoryRedux";
 
 const Header2 = () => {
+    const {
+        navCategories,
+        isLoadingNavCategories,
+        isErrorNavCategories,
+        messageNavCategories,
+    } = useSelector((state) => state.category);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isErrorNavCategories) {
+            console.log(messageNavCategories);
+        }
+
+        dispatch(getNavCategoriesData());
+
+        return () => {
+            dispatch(resetNavCategory());
+        };
+    }, [isErrorNavCategories, messageNavCategories, dispatch]);
+
     const nav__links = [
         {
             display: "Home",
@@ -46,14 +68,12 @@ const Header2 = () => {
         },
     ];
 
-    const menuRef = useRef(null);
-    const headerRef = useRef(null);
-    const toggleMenu = () => menuRef.current.classList.toggle("show__menu2");
+    const menuRef2 = useRef(null);
+    const headerRef2 = useRef(null);
+    const toggleMenu2 = () => menuRef2.current.classList.toggle("show__menu2");
 
     const totalQuantity = useSelector((state) => state.cart.totalQuantity);
     const userData = useSelector((state) => state.user.currentUser);
-
-    const dispatch = useDispatch();
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -61,9 +81,9 @@ const Header2 = () => {
                 document.body.scrollTop > 80 ||
                 document.documentElement.scrollTop > 80
             ) {
-                headerRef.current.classList.add("header__shrink2");
+                headerRef2.current.classList.add("header__shrink2");
             } else {
-                headerRef.current.classList.remove("header__shrink2");
+                headerRef2.current.classList.remove("header__shrink2");
             }
         });
 
@@ -75,7 +95,7 @@ const Header2 = () => {
     };
 
     return (
-        <header className="header2" ref={headerRef}>
+        <header className="header2" ref={headerRef2}>
             <div className="top__menu2">
                 <div className="top__menu__left2 d-flex align-items-center gap-3">
                     <div className="d-flex align-items-center gap-1">
@@ -124,21 +144,45 @@ const Header2 = () => {
                     </div>
                     <div
                         className="navigation2"
-                        ref={menuRef}
-                        onClick={toggleMenu}
+                        ref={menuRef2}
+                        onClick={toggleMenu2}
                     >
                         <div className="menu2 d-flex align-items-center">
-                            {nav__links.map((item, index) => (
+                            <NavLink
+                                to="/"
+                                className={(navClass) =>
+                                    navClass.isActive ? "active__menu" : ""
+                                }
+                            >
+                                Home
+                            </NavLink>
+                            {navCategories.map((item, index) => (
                                 <NavLink
-                                    to={item.path}
+                                    to={`/category/${item._id}`}
                                     key={index}
                                     className={(navClass) =>
-                                        navClass.isActive ? "active__menu2" : ""
+                                        navClass.isActive ? "active__menu" : ""
                                     }
                                 >
-                                    {item.display}
+                                    {item.title}
                                 </NavLink>
                             ))}
+                            <NavLink
+                                to="/about-us"
+                                className={(navClass) =>
+                                    navClass.isActive ? "active__menu" : ""
+                                }
+                            >
+                                About Us
+                            </NavLink>
+                            <NavLink
+                                to="/contact"
+                                className={(navClass) =>
+                                    navClass.isActive ? "active__menu" : ""
+                                }
+                            >
+                                Contact Us
+                            </NavLink>
                         </div>
                     </div>
                     <div className="nav__right2 d-flex align-items-center gap-3">
@@ -150,7 +194,7 @@ const Header2 = () => {
                                 </span>
                             </Link>
                         </span>
-                        <span className="mobile__menu2">
+                        <span className="mobile__menu2" onClick={toggleMenu2}>
                             <i class="ri-menu-line"></i>
                         </span>
                     </div>

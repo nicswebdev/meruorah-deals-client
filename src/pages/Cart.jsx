@@ -11,7 +11,7 @@ import "../styles/shopping-cart.css";
 
 import { Link } from "react-router-dom";
 import NumberFormat from "react-number-format";
-import Header2 from "../components/Header2";
+import Header from "../components/Header";
 
 const Cart = () => {
     const cartPackages = useSelector((state) => state.cart.cartItems);
@@ -22,7 +22,7 @@ const Cart = () => {
 
     return (
         <div>
-            <Header2 />
+            <Header type="woImg" />
             <section className="section__cart">
                 <Container>
                     <Row>

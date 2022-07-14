@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getDeals } from "../redux/apiCalls";
+import { getAllDeals, reset } from "../redux/dealsRedux";
 
 const category = [
     {
@@ -55,15 +56,32 @@ const category = [
 
 const CategoryListing = () => {
     const deals = useSelector((state) => state.deals.currentDeals);
+
+    const { allDeals, isLoading, isError, message } = useSelector(
+        (state) => state.deals
+    );
+
     const dispatch = useDispatch();
 
+    // useEffect(() => {
+    //     getDeals(dispatch);
+    // }, []);
+
     useEffect(() => {
-        getDeals(dispatch);
-    }, []);
+        if (isError) {
+            console.log(message);
+        }
+
+        dispatch(getAllDeals());
+
+        return () => {
+            dispatch(reset());
+        };
+    }, [isError, message, dispatch]);
 
     return (
         <div>
-            <Header />
+            <Header type="wImg" />
             <section className="hero__section">
                 <div className="hero__content">
                     <h5>Category</h5>
@@ -90,7 +108,7 @@ const CategoryListing = () => {
                             </ul>
                         </Col>
                         <Col lg="9" className="deals__column">
-                            {deals.map((item) => (
+                            {allDeals.map((item) => (
                                 <DealsList key={item._id} item={item} />
                             ))}
                         </Col>

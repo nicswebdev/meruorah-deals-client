@@ -18,15 +18,37 @@ import Footer from "../components/Footer";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { getDeals } from "../redux/apiCalls";
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { getBestDeals, reset } from "../redux/dealsRedux";
+import { getHighlightDeals, resetHighlight } from "../redux/highlightRedux";
+
+import Spinner from "../components/Spinner";
+import { useState } from "react";
+import { getFeaturedDeals, resetFeatured } from "../redux/featuredRedux";
+import HTMLReactParser from "html-react-parser";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-    const deals = useSelector((state) => state.deals.currentDeals);
+    //const deals = useSelector((state) => state.deals.currentDeals);
+    const { currentDeals, isLoading, isError, message } = useSelector(
+        (state) => state.deals
+    );
+    const {
+        highlightDeals,
+        isLoadingHighlight,
+        isErrorHighlight,
+        messageHighlight,
+    } = useSelector((state) => state.highlight);
+
+    const {
+        featuredDeals,
+        isLoadingFeatured,
+        isErrorFeatured,
+        messageFeatured,
+    } = useSelector((state) => state.featured);
+
     const dispatch = useDispatch();
-    //const { isFetching } = useSelector((state) => state.deals);
 
     const responsive = {
         superLargeDesktop: {
@@ -48,13 +70,53 @@ const Home = () => {
         },
     };
 
+    // useEffect(() => {
+    //     getDeals(dispatch);
+    // }, [dispatch]);
+
     useEffect(() => {
-        getDeals(dispatch);
-    }, [dispatch]);
+        if (isError) {
+            console.log(message);
+        }
+
+        dispatch(getBestDeals());
+
+        return () => {
+            dispatch(reset());
+        };
+    }, [isError, message, dispatch]);
+
+    useEffect(() => {
+        if (isErrorHighlight) {
+            console.log(messageHighlight);
+        }
+
+        dispatch(getHighlightDeals());
+
+        return () => {
+            dispatch(resetHighlight());
+        };
+    }, [isErrorHighlight, messageHighlight, dispatch]);
+
+    useEffect(() => {
+        if (isErrorFeatured) {
+            console.log(messageFeatured);
+        }
+
+        dispatch(getFeaturedDeals());
+
+        return () => {
+            dispatch(resetFeatured());
+        };
+    }, [isErrorFeatured, messageFeatured, dispatch]);
+
+    const truncate = function (str) {
+        return str.length > 10 ? str.substring(0, 120) + "..." : str;
+    };
 
     return (
         <div>
-            <Header />
+            <Header type="wImg" />
             <section className="hero__section">
                 <div className="hero__content">
                     <h5>Plan Your Travel Now!</h5>
@@ -79,7 +141,9 @@ const Home = () => {
             </section>
 
             <section className="section__highlight">
-                <Highlight />
+                {highlightDeals.map((item, index) => (
+                    <Highlight key={index} item={item} />
+                ))}
             </section>
 
             <section className="deals__section">
@@ -102,15 +166,19 @@ const Home = () => {
                     </Row>
                     <Row>
                         <Col>
-                            <Carousel
-                                responsive={responsive}
-                                infinite={true}
-                                className="featured__deals-slider"
-                            >
-                                {deals.map((item) => (
-                                    <DealsCard key={item.id} item={item} />
-                                ))}
-                            </Carousel>
+                            {isLoading ? (
+                                <Spinner />
+                            ) : (
+                                <Carousel
+                                    responsive={responsive}
+                                    infinite={true}
+                                    className="featured__deals-slider"
+                                >
+                                    {currentDeals.map((item) => (
+                                        <DealsCard key={item.id} item={item} />
+                                    ))}
+                                </Carousel>
+                            )}
                         </Col>
                     </Row>
                 </Container>
@@ -135,9 +203,9 @@ const Home = () => {
                         </Col>
                     </Row>
                     <div className="desktop">
-                        {deals.map((item, index) =>
+                        {featuredDeals.map((item, index) =>
                             !(index % 2) ? (
-                                <Row className="mb-5">
+                                <Row key={index} className="mb-5">
                                     <Col lg="7">
                                         <img
                                             src={item.img}
@@ -148,38 +216,36 @@ const Home = () => {
                                     <Col lg="5" className="featured__content">
                                         <h5>{item.title}</h5>
                                         <div className="excerpt">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit.
-                                            Pariatur, ea. Laboriosam earum quia
-                                            repellendus, accusamus maiores
-                                            voluptatibus necessitatibus quod
-                                            recusandae cum consequatur error
-                                            neque ex. Nulla non perspiciatis
-                                            quam modi.
+                                            {HTMLReactParser(
+                                                `${truncate(item.desc)}`
+                                            )}
                                         </div>
                                         <div className="link__view">
-                                            View Details{" "}
-                                            <i class="ri-arrow-right-s-line"></i>
+                                            <Link
+                                                to={`/deal-details/${item._id}`}
+                                            >
+                                                View Details
+                                                <i class="ri-arrow-right-s-line"></i>
+                                            </Link>
                                         </div>
                                     </Col>
                                 </Row>
                             ) : (
-                                <Row className="mb-5">
+                                <Row key={index} className="mb-5">
                                     <Col lg="5" className="featured__content">
                                         <h5>{item.title}</h5>
                                         <div className="excerpt">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit.
-                                            Pariatur, ea. Laboriosam earum quia
-                                            repellendus, accusamus maiores
-                                            voluptatibus necessitatibus quod
-                                            recusandae cum consequatur error
-                                            neque ex. Nulla non perspiciatis
-                                            quam modi.
+                                            {HTMLReactParser(
+                                                `${truncate(item.desc)}`
+                                            )}
                                         </div>
                                         <div className="link__view">
-                                            View Details{" "}
-                                            <i class="ri-arrow-right-s-line"></i>
+                                            <Link
+                                                to={`/deal-details/${item._id}`}
+                                            >
+                                                View Details
+                                                <i class="ri-arrow-right-s-line"></i>
+                                            </Link>
                                         </div>
                                     </Col>
                                     <Col lg="7">
@@ -194,8 +260,8 @@ const Home = () => {
                         )}
                     </div>
                     <div className="mobile">
-                        {deals.map((item, index) => (
-                            <Row className="mb-5">
+                        {featuredDeals.map((item, index) => (
+                            <Row key={index} className="mb-5">
                                 <Col lg="7">
                                     <img
                                         src={item.img}
@@ -206,17 +272,15 @@ const Home = () => {
                                 <Col lg="5" className="featured__content">
                                     <h5>{item.title}</h5>
                                     <div className="excerpt">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Pariatur, ea.
-                                        Laboriosam earum quia repellendus,
-                                        accusamus maiores voluptatibus
-                                        necessitatibus quod recusandae cum
-                                        consequatur error neque ex. Nulla non
-                                        perspiciatis quam modi.
+                                        {HTMLReactParser(
+                                            `${truncate(item.desc)}`
+                                        )}
                                     </div>
                                     <div className="link__view">
-                                        View Details{" "}
-                                        <i class="ri-arrow-right-s-line"></i>
+                                        <Link to={`/deal-details/${item._id}`}>
+                                            View Details
+                                            <i class="ri-arrow-right-s-line"></i>
+                                        </Link>
                                     </div>
                                 </Col>
                             </Row>

@@ -17,6 +17,7 @@ import "../styles/checkout.css";
 
 import { Link } from "react-router-dom";
 import NumberFormat from "react-number-format";
+import Header from "../components/Header";
 
 const Checkout = () => {
     const [phone, setPhone] = useState("");
@@ -58,7 +59,7 @@ const Checkout = () => {
 
     return (
         <div>
-            <Header2 />
+            <Header type="woImg" />
             <section className="section__cart">
                 <Container>
                     <Row>

@@ -1,4 +1,3 @@
-
 .section__cart {
     padding-top: 40px;
     padding-bottom: 60px;
@@ -14,9 +13,9 @@
 
 .cart__page-title h5 {
     font-size: 2rem;
-    color: #A26B46;
+    color: #a26b46;
     text-transform: uppercase;
-    font-family: 'Proxima';
+    font-family: "Jost";
 }
 
 .cart__page-button {
@@ -33,11 +32,10 @@
 }
 
 .cart {
-    
 }
 
-.cart__item-list {
-    
+.cart__item-list h5 {
+    font-family: "Jost";
 }
 
 .cart__bottom {
@@ -46,21 +44,21 @@
 }
 
 .cart__bottom h5 {
-    font-family: 'Proxima';
+    font-family: "Jost";
     font-size: 1.6rem;
     color: #19191a;
     font-weight: 300;
 }
 
 .subtotal__cart h5 {
-    font-family: 'Proxima';
+    font-family: "Jost";
     font-size: 1.2rem;
     color: #19191a;
     font-weight: 300;
 }
 
 .cart__bottom h6 {
-    font-family: 'Proxima';
+    font-family: "Jost";
     font-size: 1rem;
     color: #19191a;
     margin-top: 15px;
@@ -68,10 +66,10 @@
 }
 
 .cart__bottom button {
-    background: #A26B46;
+    background: #a26b46;
     padding: 4px 20px;
-    border: 1px solid #A26B46;
-    color: #FFF;
+    border: 1px solid #a26b46;
+    color: #fff;
     width: 100%;
 }
 

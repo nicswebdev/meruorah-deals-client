@@ -1,4 +1,6 @@
 import React from "react";
+import NumberFormat from "react-number-format";
+import { Link } from "react-router-dom";
 
 import { Container, Row, Col } from "reactstrap";
 
@@ -7,14 +9,14 @@ import logo from "../assets/image/logo-pinta.png";
 
 import "../styles/highlight.css";
 
-function highlight() {
+function highlight({ item }) {
     return (
         <Container className="highlight__container">
             <Row className="row__highlight g-0">
                 <Col lg="6" md="6">
                     <div className="highlight__img">
                         <img
-                            src={highlightImg}
+                            src={item.img}
                             alt="highlight-img"
                             className="w-100"
                         />
@@ -27,16 +29,32 @@ function highlight() {
                             alt="logo"
                             className="highlight__logo"
                         />
-                        <h5>
-                            2 or 3 Night Staycation @ Meruorah Komodo Labuan
-                            Bajo
-                        </h5>
+                        <h5>{item.title}</h5>
                         <div className="price">
-                            <span className="deals__price">IDR 1,000,000</span>
-                            <span className="fixed__price">IDR 1,800,000</span>
+                            <span className="deals__price">
+                                <NumberFormat
+                                    value={item.dealPrice}
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    prefix={"IDR "}
+                                    renderText={(value) => value}
+                                />
+                            </span>
+                            <span className="fixed__price">
+                                <NumberFormat
+                                    value={item.fixedPrice}
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    prefix={"IDR "}
+                                    renderText={(value) => value}
+                                />
+                            </span>
                         </div>
                         <div className="link__view">
-                            View Details <i class="ri-arrow-right-s-line"></i>
+                            <Link to={`/deal-details/${item._id}`}>
+                                View Details{" "}
+                                <i class="ri-arrow-right-s-line"></i>
+                            </Link>
                         </div>
                     </div>
                 </Col>

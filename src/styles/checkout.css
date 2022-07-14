@@ -1,19 +1,17 @@
-
 .order__summary {
     border-bottom: 1px solid #cecece;
     margin-bottom: 10px;
     padding-bottom: 5px;
 }
 
-.order__item h5, .order__total h5 {
-    font-family: 'Proxima';
-    font-size: .9rem;
+.order__item h5,
+.order__total h5 {
+    font-family: "Jost";
+    font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 0rem;
 }
 
 .order__item span {
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
-
-

@@ -7,6 +7,7 @@ import { login } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../styles/login.css";
+import Header from "../components/Header";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const Login = () => {
 
     return (
         <div>
-            <Header2 />
+            <Header type="woImg" />
             <section className="login__section">
                 <Container>
                     <Row>
